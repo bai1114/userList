@@ -52,17 +52,20 @@ const getUsers = (state = initState, action) => {
         err: null
       };
     case 'CREATE_USER_FAIL':
+        console.log("Create User Error : " + action.err);
       return {
         ...state,
         isLoading: false,
         err: action.error
       };
     case 'CREATE_USER_SUCCESS':
+      const newUsers = state.users;
+      newUsers.push(action.user);
       return {
         ...state,
         isLoading: false,
         err: null,
-        users: action.user
+        users: newUsers
       };
     default:
       return state;

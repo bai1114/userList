@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 
 class UserList extends Component {
   componentDidMount() {
-    this.props.dispatch(getUsers());
+    this.props.getUsers();
   }
   
   deleteUser = id => {
-    this.props.dispatch(deleteUser(id));
+    this.props.deleteUser(id);
   }
   
   editUser = id => {
-    this.props.dispatch(editUser(id));
+    this.props.editUser(id);
   }
 
   render() {
@@ -62,12 +62,7 @@ class UserList extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.getUsers.users
-  };
-}
 
 
-export default connect(mapStateToProps)(UserList);
+export default UserList;
 

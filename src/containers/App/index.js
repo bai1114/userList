@@ -8,8 +8,6 @@ import CreateUser from '../../components/CreateUser';
 
 class App extends Component { 
   render() {
-    console.log(this.props.users);
-    console.log(this.props.getUsers);
     return (
       <BrowserRouter>
         <Switch>

@@ -19,14 +19,16 @@ const createUserSuccess = (user) => {
   }
 };
 
- 
 export const createUser = (user) => {
   return (dispatch) => {
     dispatch(createUserStart());
-    axios
-      .post('http://localhost:8080/api/users')
+    axios({
+      method: 'POST',
+      url: 'http://localhost:8080/api/users',
+      data: user
+    })
       .then(response => {
-        dispatch(createUserSuccess(user));
+        dispatch(createUserSuccess(response.newUser));
       })
       .catch(error => {
         dispatch(createUserFail(error));
