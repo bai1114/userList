@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getUsers, deleteUser, editUser } from '../../redux/action-creators';
 //import { BrowserRouter, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 class UserList extends Component {
   componentDidMount() {
     this.props.getUsers();
+    this.props.cancelRedirect();
   }
   
   deleteUser = id => {
@@ -18,7 +17,9 @@ class UserList extends Component {
   }
 
   render() {
-    return (
+    if(this.props.isLoading) return <div>Loading... </div>
+    else return (
+      
       <div className = 'container'>
         <h2>Users</h2>
         <div className = 'searchBox'>
