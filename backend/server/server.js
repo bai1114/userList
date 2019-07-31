@@ -38,16 +38,16 @@ var router = express.Router();              // get an instance of the express Ro
 
 // 2nd part -- add actual routing
 // middleware to use for all requests
-router.use(function(req, res, next) {
-    // do logging
-    console.log('Something is happening.');
-    next(); // make sure we go to the next routes and don't stop here
-});
+// router.use(function(req, res, next) {
+//     // do logging
+//     console.log('Something is happening.');
+//     next(); // make sure we go to the next routes and don't stop here
+// });
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
-});
+// router.get('/', function(req, res) {
+//     res.json({ message: 'hooray! welcome to our api!' });   
+// });
 
 // more routes for our API will happen here
 // 2nd part
@@ -58,7 +58,7 @@ router.get('/', function(req, res) {
 
     // create a user (accessed at POST http://localhost:8080/api/users)
 router.post('/users', function(req, res) {
-        
+        /*
         var user = new User();      // create a new instance of the User model
         user.firstname = req.body.firstname;  // set the users firstname (comes from the request)
         user.lastname = req.body.lastname;  // set the users lastname (comes from the request)
@@ -75,15 +75,28 @@ router.post('/users', function(req, res) {
 
             res.json({ message: 'User created!' });
         });
+        */
+       console.log("This is in the post /users");
+       const newUser = new User(req.body);
+       console.log(req.body);
+       newUser.save(err => {
+         if (err) {
+           res.status(500).json({err});
+           console.log(err);
+         } else {
+           res.status(200).json({newUser});
+         }
+       });
         
-    })
+    });
 	//;
 // 3rd part
 
 // 4th part -- get the user list
 // get all the user (accessed at GET http://localhost:8080/api/users)
 router.get('/users', function(req, res) {
-        User.find(function(err, users) {
+    console.log("This is in the get /users");
+        User.find((err, users) => {
             if (err)
                 res.send(err);
 

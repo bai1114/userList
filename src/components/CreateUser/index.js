@@ -33,7 +33,6 @@ class CreateUser extends Component {
         age: this.state.age,
         password: this.state.password
       };
-      console.log(user);
       this.props.createUser(user);
       this.setState({
         firstname: '',
@@ -104,21 +103,22 @@ class CreateUser extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.getUsers.users
-  };
-}
+export default CreateUser;
+// const mapStateToProps = (state) => {
+//   return {
+//     users: state.getUsers.users
+//   };
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getUsers: () => {
-      dispatch(getUsers());
-    },
-    createUser: (user) => {
-      dispatch(createUser(user));
-    }
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     getUsers: () => {
+//       dispatch(getUsers());
+//     },
+//     createUser: (user) => {
+//       dispatch(createUser(user));
+//     }
+//   }
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CreateUser);
+// export default connect(mapStateToProps,mapDispatchToProps)(CreateUser);
