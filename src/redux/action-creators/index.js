@@ -28,7 +28,8 @@ export const createUser = (user) => {
       data: user
     })
       .then(response => {
-        dispatch(createUserSuccess(response.newUser));
+        console.log(response.data);
+        dispatch(createUserSuccess(response.data.newUser));
       })
       .catch(error => {
         dispatch(createUserFail(error));

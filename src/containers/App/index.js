@@ -19,6 +19,8 @@ class App extends Component {
                 users = {this.props.users}
                 getUsers = {this.props.getUsers}
                 deleteUser = {this.props.deleteUser}
+                isLoading = {this.props.isLoading}
+                cancelRedirect={this.props.cancelRedirect}
               /> 
             } 
           />
@@ -29,6 +31,8 @@ class App extends Component {
                 createUser = {this.props.createUser} 
                 redirect = {this.props.redirect}
                 redirectToUserlist = {this.props.redirectToUserlist}
+                isLoading = {this.props.isLoading}
+                
               />
             }
           />
@@ -43,7 +47,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     users: state.getUsers.users,
-    redirect: state.redirect
+    redirect: state.redirect,
+    isLoading:state.getUsers.isLoading
   }
 };
 

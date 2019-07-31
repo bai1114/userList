@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { getUsers, createUser } from '../../redux/action-creators';
 
 class CreateUser extends Component {
@@ -70,7 +69,7 @@ class CreateUser extends Component {
   render() {
     const passwordStyle = {color: 'red'};
     const { redirect } = this.props;
-    if (redirect) {
+    if (redirect && !this.props.isLoading) {
       return <Redirect to = {{ pathname: '/' }}/>
     } else {
       return (
